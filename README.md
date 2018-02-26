@@ -1,2 +1,3 @@
-"# Commpartners" 
-"# Commpartners Mass Update Hack \n like I mean quick solution" 
+
+# Commpartners Mass Update Hack
+like a quick solution
