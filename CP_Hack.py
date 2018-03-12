@@ -113,20 +113,22 @@ def UpdateInfo(target, id, value):
 		description.click()
 		alt_url_slug = browser.find_element_by_name("alt_url_slug")
 	elif target=="start_sales_at":
-		status.click()
+		sales_date.click()
 		attack = browser.find_element_by_id("sales_start_at")
 		attack.send_keys("YOLO")
 	elif target=="auto_end":
+		sales_date.click()
 		auto_end = browser.find_element_by_id("end_sales_auto_status_checkbox")
 		auto_end.click()
 		auto_end = browser.find_element_by_id("auto_status_date")
 		auto_end.send_keys("BALALALALALALA")
 	elif target=="end_sales_at":
+		sales_date.click()
 		browser.find_element_by_id("sales_end_at")
 	elif target=="end_sales_auto_status":
-		print("hiiiiiiii")
+		sales_date.click()
 	elif target=="auto_status_date":
-		print("hiiiiiiii")
+		sales_date.click()
 	elif target=="show_in_catalog":
 		print("hiiiiiiii")
 	elif target=="remote_product_id":
