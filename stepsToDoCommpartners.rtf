@@ -1,0 +1,143 @@
+##########################################
+## Steps to Admin Page for Presentation ##
+##########################################
+Step 1 (go to Login Page):
+https://www.asam.org/login?ReturnURL=https://elearning.asam.org
+
+UserName (jwilliams@asam.org):
+<input id="UserName" class="username-input" placeholder="Enter your email address" v-validate:username="['email']" type="email">
+
+Password:
+<input id="Password" class="password-input" placeholder="Enter your password" type="password">
+
+Submit:
+<button value="SignIn" class="btn-medium" id="btnSubmit">Login</button>
+
+##########################################
+### Then it takes me to the home page ####
+##########################################
+
+Open a new tab:
+edit all products using:
+https://elearning.asam.org/admin/products/{Product ID}/edit
+##### Where ID is a product ID
+
+Path of all edits:
+//*[@id="tab_{tabID}"]
+:{ basic, pricing, status, packages, time_limit, categories,
+              seo, social, integration}
+
+basic: { title, summary, short product url, cover image, description}
+       title: '//*[@id="title"]'
+       summary: '/html/body/div[2]/div[2]/div[2]/div/
+                form/div[1]/div/div[1]/div[1]/div[1]/
+                p[2]'
+       short product url: '/html/body/div[2]/div[2]/
+                          div[2]/div/form/div[1]/div/
+                          div[1]/div[1]/div[1]/input[2]'
+       cover image: '/html/body/div[2]/div[2]/div[2]/div/
+                    form/div[1]/div/div[1]/div[1]/div[2]/
+                    div[1]/div[1]/div/span'
+       description: '/html/body/div[2]/div[2]/div[2]/
+                    div/form/div[1]/div/div[1]/div[5]/
+                    div/div/div[2]/p'
+
+pricing:  Non-Member
+          Regular Member
+          Retired
+          Early Career Physician
+          Resident
+          Student
+          Associate
+          ASAM Staff
+          International Member
+          Emeritus Member
+          Provisional Member
+          Fellow Member
+          Honorary Member
+          CRT Member
+          Guests (People who are not logged in)
+
+####################
+### Explanation ####
+####################
+So it works in a table (//*[@id="pricing_table"]) where each <tr> is a pricing level and each <td> is an element
+td1: text name of pricings (cant edit here)
+td2: Can View in Catalog
+td3: Can Register
+td4: Instant Registration
+td5: Price in decimal
+
+:'/html/body/div[2]/div[2]/div[2]/div/
+     form/div[1]/div/div[2]/ul/li/table/
+     tbody/tr[{number of pricing level}]/td[{column for input}]/input'
+
+
+status: FORMAT = '2013-04-25 01:07 PM'
+        start sales: '//*[@id="sales_start_at"]'
+        end sales: '//*[@id="sales_start_at"]'
+        auto-close: '//*[@id="end_sales_auto_status_checkbox"]'
+
+
+packages:
+        Not in Packages: '/html/body/div[2]/div[2]/
+                           div[2]/div/form/div[1]/
+                           div/div[4]/div[1]/label/input'
+
+time_limit:
+        Max Days for Completion: '//*[@id="max_days_for_completion"]'
+        Email to Mngrs upon Complete: '//*[@id="email_to_managers_on_completion"]'
+        Expiration reference time:
+                   '<select id="expiration_calculation_time" class="span3"
+                   name="expiration_calculation_time"><option
+                   value="registration_time" selected="selected">
+                   Days from registration time</option><option
+                   value="first_asset_access_time">
+                   Days from first component access time</option>
+                   <option value="first_required_asset_access_time">
+                   Days from first required component access time</option>
+                   <option value="first_live_webinar_start_time">
+                   Days from first live webinar start time</option>
+                   <option value="specified_time">On specific date and time
+                   </option></select>'
+
+categories: Will add later
+
+seo:
+        keywords: '/html/body/div[2]/div[2]/
+                  div[2]/div/form/div[1]/div/
+                  div[7]/textarea[1]'
+        descriptions: '/html/body/div[2]/div[2]/
+                      div[2]/div/form/div[1]/div/
+                      div[7]/textarea[2]'
+
+social: Doesnt seem important
+
+integration:
+        Remote Product ID: '/html/body/div[2]/div[2]/div[2]/
+                           div/form/div[1]/div/div[9]/input'
+ark for Unix-like         Remote Accounting Code: '/html/body/div[2]/div[2]/
+                                div[2]/div/form/div[1]/
+                                div/div[9]/select'
+        Accounting Date FORMAT= 2018-01-16
+                   :       '/html/body/div[2]/div[2]/div[2]/
+                           div/form/div[1]/div/div[9]/div[1]/
+                           input'
+SAVE: '//*[@id="btn-save-product-and-stay"]'
+      '//*[@id="btn-save-product"]'
+
+Registration: '/html/body/div[2]/div[2]/div[2]/ul/div/div[1]/a'
+
+##############################################################################
+
+https://elearning.asam.org/admin/products/{ProductId}/{ProductArea}
+
+Product Areas { Basic, Components, Tabs, Speakers, Handouts, Email Templates,
+                Questions on Checkout, Microsite}
+Values        { edit, assets, tabs, speakers, handouts, email-templates,
+                checkout-questions, microsite}
+
+tabs:
+
+Read all products on:
+https://elearning.asam.org/admin/products
