@@ -63,18 +63,43 @@ def login():
 	login = browser.find_elements_by_css_selector('#btnSubmit')
 	login[0].click()
 
+def EraseText():
+	# this is probably the hackiest thing i've ever done
+	actions = ActionChains(browser)
+	actions.send_keys(Keys.CONTROL)
+	actions.send_keys("A")
+	actions.send_keys(Keys.BACKSPACE)
+	actions.send_keys(Keys.DELETE)
+	x = 1
+	while x < 100:
+		actions.perform()
+		x+=1
+
 def UpdateInfo(target, id, value):
 	page = "https://elearning.asam.org/admin/products/%s/edit" % id
 	browser.get(page)
 	save = browser.find_element_by_id("btn-save-product-and-stay")
+	description = browser.find_element_by_id('tab_basic')
+	pricing = browser.find_element_by_id('tab_pricing')
+	sales_date = browser.find_element_by_id('tab_status')
+	packages = browser.find_element_by_id('tab_packages')
+	time_limit = browser.find_element_by_xpath("//*[@id='prod_tabs']/li[5]/a")
+	categories = browser.find_element_by_xpath("//*[@id='prod_tabs']/li[6]/a")
+	seo = browser.find_element_by_xpath("//*[@id='prod_tabs']/li[7]/a")
+	social = browser.find_element_by_xpath("//*[@id='prod_tabs']/li[8]/a")
+	integration = browser.find_element_by_xpath("//*[@id='prod_tabs']/li[9]/a")
 	if target=="title":
-		print("hiiiiiiii")
+		description.click()
+		title = browser.find_element_by_id("title")
+		title.click()
+		EraseText()
 	elif target=="summary":
+		description.click()
+		summary = browser.find_element_by_name("summary")
 		print("hiiiiiiii")
 	elif target=="description":
 		print("hiiiiiiii")
 	elif target=="start_sales_at":
-		status = browser.find_element_by_id('tab_status')
 		status.click()
 		attack = browser.find_element_by_id("sales_start_at")
 		attack.send_keys("YOLO")
