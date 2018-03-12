@@ -64,18 +64,27 @@ def login():
 	login[0].click()
 
 def UpdateInfo(target, id, value):
+	page = "https://elearning.asam.org/admin/products/%s/edit" % id
+	browser.get(page)
+	save = browser.find_element_by_id("btn-save-product-and-stay")
 	if target=="title":
-		print("hiiiiiiii")
-	elif target=="url_slug":
 		print("hiiiiiiii")
 	elif target=="summary":
 		print("hiiiiiiii")
 	elif target=="description":
 		print("hiiiiiiii")
 	elif target=="start_sales_at":
-		print("hiiiiiiii")
+		status = browser.find_element_by_id('tab_status')
+		status.click()
+		attack = browser.find_element_by_id("sales_start_at")
+		attack.send_keys("YOLO")
+	elif target=="auto_end":
+		auto_end = browser.find_element_by_id("end_sales_auto_status_checkbox")
+		auto_end.click()
+		auto_end = browser.find_element_by_id("auto_status_date")
+		auto_end.send_keys("BALALALALALALA")
 	elif target=="end_sales_at":
-		print("hiiiiiiii")
+		browser.find_element_by_id("sales_end_at")
 	elif target=="end_sales_auto_status":
 		print("hiiiiiiii")
 	elif target=="auto_status_date":
@@ -85,15 +94,11 @@ def UpdateInfo(target, id, value):
 	elif target=="remote_product_id":
 		print("hiiiiiiii")
 	elif target=="meta_keywords":
-		print("hiiiiiiii")
+		browser.find_element_by_xpath("/html/body/div[2]/div[2]/div[2]/div/form/div[1]/div/div[7]/textarea[1]")
 	elif target=="meta_description":
-		print("hiiiiiiii")
-	elif target=="max_days_for_completion":
-		print("hiiiiiiii")
+		browser.find_element_by_xpath("/html/body/div[2]/div[2]/div[2]/div/form/div[1]/div/div[7]/textarea[2]")
 	elif target=="remote_accounting_code":
-		print("hiiiiiiii")
-	elif target=="show_search_for_package":
-		print("hiiiiiiii")
+		browser.find_element_by_xpath("/html/body/div[2]/div[2]/div[2]/div/form/div[1]/div/div[9]/select")
 	elif target=="categories":
 		print("hiiiiiiii")
 
