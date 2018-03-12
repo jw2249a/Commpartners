@@ -8,9 +8,6 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.action_chains import ActionChains
-import win32com.client
-shell = win32com.client.Dispatch("WScript.Shell")
-
 target_file = "working_file.csv"
 
 # open data csv
@@ -76,8 +73,11 @@ def EraseText():
 		x+=1
 
 def UpdateInfo(target, id, value):
+	# gets the item's editing page by the
 	page = "https://elearning.asam.org/admin/products/%s/edit" % id
 	browser.get(page)
+
+	# defining the Tabs to click
 	save = browser.find_element_by_id("btn-save-product-and-stay")
 	description = browser.find_element_by_id('tab_basic')
 	pricing = browser.find_element_by_id('tab_pricing')
@@ -88,17 +88,30 @@ def UpdateInfo(target, id, value):
 	seo = browser.find_element_by_xpath("//*[@id='prod_tabs']/li[7]/a")
 	social = browser.find_element_by_xpath("//*[@id='prod_tabs']/li[8]/a")
 	integration = browser.find_element_by_xpath("//*[@id='prod_tabs']/li[9]/a")
+
 	if target=="title":
 		description.click()
 		title = browser.find_element_by_id("title")
 		title.click()
 		EraseText()
+		title.send_keys("BALALLALALAL")
 	elif target=="summary":
 		description.click()
 		summary = browser.find_element_by_name("summary")
-		print("hiiiiiiii")
+		summary.click()
+		EraseText()
+		summary.send_keys("BAKAKAKAKAK")
 	elif target=="description":
-		print("hiiiiiiii")
+		description.click()
+		descript = browser.find_element_by_id("redactor-uuid-0")
+		descript.click()
+		EraseText()
+		# this works but not text alone for some reason
+		descript.send_keys(Keys.SPACE)
+		descript.send_keys("Blaka Blaka")
+	elif target=="alt_url_slug":
+		description.click()
+		alt_url_slug = browser.find_element_by_name("alt_url_slug")
 	elif target=="start_sales_at":
 		status.click()
 		attack = browser.find_element_by_id("sales_start_at")
